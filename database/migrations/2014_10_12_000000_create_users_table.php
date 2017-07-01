@@ -13,6 +13,26 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::create('role', function (Blueprint $table) {
+            $table->increments('role_id');
+            $table->string('role_name',255);
+        });
+
+        DB::table('role')->insert([
+            [ 'role_name' => 'Guest' ],
+            [ 'role_name' => 'User' ],
+            [ 'role_name' => 'Donator' ],
+            [ 'role_name' => 'Moderator'],
+            [ 'role_name' => 'Adminstrator' ],
+        ]);
+
+
+        Schema::create('status', function (Blueprint $table) {
+            $table->increments('status_id');
+            $table->string('status_name_en',255);
+            $table->string('status_name_th',255);
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -31,5 +51,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('status');
+        Schema::dropIfExists('role');
     }
 }
