@@ -51,13 +51,13 @@ class ApiSkillController extends Controller
         $update = Skill::where('id','=',$request->id)->update([
             'name' => $request->name,
             'description' => $request->description,
-            'max_level' => $request->max_level,
-            'circle' => $request->circle,
-            'url' => $request->url,
-            'class_id' => $request->class_id,
+        //    'max_level' => $request->max_level,
+        //    'circle' => $request->circle,
+        //    'url' => $request->url,
+        //    'class_id' => $request->class_id,
         ]);
 
-        $skill = Skill::where('name','=', $request->name)->firstOrFail();
+        $skill = Skill::where('id','=', $request->id)->firstOrFail();
         return response()->json([
             'data' => $skill,
             'code' => 200,
@@ -67,7 +67,7 @@ class ApiSkillController extends Controller
 
     public function delete(Request $request) 
     {
-        $update = Skill::where('id','=',$request->id)->delete();
+        // $delete = Skill::where('id','=',$request->id)->delete();
         return response()->json([
             'data' => [],
             'code' => 200,

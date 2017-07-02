@@ -20,10 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/classes', 'ClassController@index');
 
-// SkillController 
+// ApiSkillController 
 Route::get('/skills', 'ApiSkillController@index');
 Route::post('/skills/store', 'ApiSkillController@store');
 Route::put('/skills/update', 'ApiSkillController@update');
 Route::delete('/skills/delete', 'ApiSkillController@delete');
 
-Route::get('/attributes', 'AttributeController@index');
+// ApiAttributeController 
+Route::get('/attributes', 'ApiAttributeController@index');
+Route::post('/attributes/store', 'ApiAttributeController@store');
+Route::put('/attributes/update', 'ApiAttributeController@update');
+Route::delete('/attributes/delete', 'ApiAttributeController@delete');
